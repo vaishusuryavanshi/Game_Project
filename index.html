@@ -1,0 +1,377 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamestore Home</title>
+
+    <link rel="icon" href="{% static 'images/weblogo.png' %}">
+
+    
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+ 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        h4 {
+            text-align: center;
+            color: #2874f0; /* Flipkart blue */
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0; /* Light grey background */
+        }
+        tr:nth-child(even) {
+            background-color: #fafafa; /* Alternate row background */
+        }
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+        .total-price {
+            font-weight: bold;
+            color: #2874f0; /* Flipkart blue */
+        }
+    </style>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin: 0;
+            font-family: 'Trade Winds', cursive;
+        }
+        .marquee {
+            color: rgb(46, 160, 55);
+            border: none;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+        .marquee-left {
+            animation: marquee-left 20s linear infinite;
+        }
+        .marquee-right {
+            animation: marquee-right 20s linear infinite;
+        }
+        @keyframes marquee-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        /*-- New for container bouncing img --*/
+        section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background-color: #f3f5fa;
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #37517e;
+}
+
+.section-title h2::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: #ddd;
+  bottom: 1px;
+  left: calc(50% - 60px);
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #47b2e4;
+  bottom: 0;
+  left: calc(50% - 20px);
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+#hero {
+  width: 100%;
+  height: 80vh;
+  background: #37517e;
+}
+
+#hero .container {
+  padding-top: 72px;
+}
+
+#hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #fff;
+}
+
+#hero h2 {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 50px;
+  font-size: 24px;
+}
+
+#hero .btn-get-started {
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 28px 11px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px 0 0 0;
+  color: #fff;
+  background: #47b2e4;
+}
+
+#hero .btn-get-started:hover {
+  background: #209dd8;
+}
+
+#hero .btn-watch-video {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: 0.5s;
+  margin: 10px 0 0 25px;
+  color: #fff;
+  line-height: 1;
+}
+
+#hero .btn-watch-video i {
+  line-height: 0;
+  color: #fff;
+  font-size: 32px;
+  transition: 0.3s;
+  margin-right: 8px;
+}
+
+#hero .btn-watch-video:hover i {
+  color: #47b2e4;
+}
+
+#hero .animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@media (max-width: 991px) {
+  #hero {
+    height: 100vh;
+    text-align: center;
+  }
+
+  #hero .animated {
+    animation: none;
+  }
+
+  #hero .hero-img {
+    text-align: center;
+  }
+
+  #hero .hero-img img {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  #hero h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+
+  #hero .hero-img img {
+    width: 70%;
+  }
+}
+
+@media (max-width: 575px) {
+  #hero .hero-img img {
+    width: 80%;
+  }
+
+  #hero .btn-get-started {
+    font-size: 16px;
+    padding: 10px 24px 11px 24px;
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+
+
+    </style>
+</head>
+<body>
+
+<!-- Navbar Section -->
+<div style="background-color: #37517e; padding: 10px 0; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+        <h1>
+            <span style="color: white;">GAME</span><span style="color: orange;">STORE</span>
+        </h1>
+        <div style="display: flex; align-items: center;">
+            <div style="margin-right: 20px;">
+                <input type="text" placeholder="Search" style="padding: 5px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+            <button style="background-color: transparent; border: none; color: white; padding: 5px 10px; cursor: pointer;">Search</button>
+        </div>
+        <div>
+            <a href="/" style="color: white; text-decoration: none; margin-right: 20px;">Home</a>
+            <a href="/products/show" style="color: white; text-decoration: none; margin-right: 20px;">Products</a>
+
+            {% if request.user.is_authenticated %}
+            <a href="/cart" style="color: white; text-decoration: none; margin-right: 20px;">Cart</a>
+            <a href="/logout" style="color: white; text-decoration: none; margin-right: 20px;">Log out</a>
+            <a href="/orders" style="color: white; text-decoration: none; margin-right: 20px;">Order History</a>
+            <a style="color: rgb(243, 243, 231);">Hello,</a>
+            <a href="#" style="color: yellow; text-decoration: none; font-size: 25px; font-family: Cursive;" >{{ request.user.first_name }}</a>
+
+
+            {% else %}
+            <a href="/login" style="color: white; text-decoration: none; margin-right: 20px;">Cart</a>
+            <a href="/login" style="color: white; text-decoration: none; margin-right: 20px;">Log in</a>
+            <a href="/register" style="color: white; text-decoration: none; margin-right: 20px;">Register</a>
+            
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Marquees -->
+<!-- Marquees -->
+<div class="marquee marquee-left">
+  FREE VOUCHER WORTH <span style="color: red; font-size: 15px;">★Rs. 999 /-</span>. ON ORDERS ABOVE Rs. 2499/-.<span style="color: red; font-size: 10px;">LimitedTimeOffer**</span>.
+</div>
+
+<!-- Body Content Goes Here -->
+
+<!-- Body Content Goes Here -->
+    <section id="hero" class="d-flex align-items-center">
+
+        <div class="container">
+                  
+          <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+              <h1>Gaming Brings People Together..</h1>
+              <h2>"Join your Gaming Squad and Make Every Night Legendary! Welcome to <a href="https://www.youtube.com/channel/UCOrG8bzwFCvVFZkjiWHzhcw" style="color:#EAEFF6 ;">1xGAMING</a>, Where the Adventure Begins!"</h2>
+              <div class="d-flex justify-content-center justify-content-lg-start">
+                <a href="/products/show" class="btn-get-started scrollto">Get Started</a>
+                <a href="https://youtu.be/oONK-oUgVg4?si=RNvD8rMYbfXwSdQo" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+              </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+              <img src="{% static 'images/hub.png'  %}" class="img-fluid animated" alt="">
+            </div>
+          </div>
+        </div>
+
+        
+</body>
+</html>
+
+
+
+<!-- {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The GameStore App</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <h1 align="center">Hello</h1>
+
+
+    {% if request.user.is_authenticated %}
+        <h2 align="center">Welcome, {{ request.user.username }}</h2>
+        <h3 align="center"><a href="/logout">Logout</a></h3>
+        <h3 align="center"><a href="/products/show">Show Products</a></h3>
+        <h3 align="center"><a href="/cart">Cart</a></h3>
+        <h3 align="center"><a href="/orders">Order History</a></h3>
+    {% else %}
+        <h3 align="center"><a href="/register">Register</a></h3>
+        <h3 align="center"><a href="/login">Login</a></h3>
+        <h3 align="center"><a href="/products/show">Show Products</a></h3>
+        
+    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+
+</body>
+</html> -->

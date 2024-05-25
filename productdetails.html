@@ -1,0 +1,638 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review</title>
+
+    <link rel="icon" href="{% static 'images/weblogo.png' %}">
+
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Review CSS Files -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h4 {
+            text-align: center;
+            color: #2874f0;
+            /* Flipkart blue */
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            /* Light grey background */
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafafa;
+            /* Alternate row background */
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        .total-price {
+            font-weight: bold;
+            color: #2874f0;
+            /* Flipkart blue */
+        }
+    </style>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: 'Trade Winds', cursive;
+        }
+
+        .marquee {
+            color: rgb(46, 160, 55);
+            border: none;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .marquee-left {
+            animation: marquee-left 20s linear infinite;
+        }
+
+        .marquee-right {
+            animation: marquee-right 20s linear infinite;
+        }
+
+        @keyframes marquee-left {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /*-- New for container bouncing img --*/
+        section {
+            padding: 60px 0;
+            overflow: hidden;
+        }
+
+        .section-bg {
+            background-color: #f3f5fa;
+        }
+
+        .section-title {
+            text-align: center;
+            padding-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            position: relative;
+            color: #37517e;
+        }
+
+        .section-title h2::before {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 120px;
+            height: 1px;
+            background: #ddd;
+            bottom: 1px;
+            left: calc(50% - 60px);
+        }
+
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: #47b2e4;
+            bottom: 0;
+            left: calc(50% - 20px);
+        }
+
+        .section-title p {
+            margin-bottom: 0;
+        }
+
+        #hero {
+            width: 100%;
+            height: 80vh;
+            background: #37517e;
+        }
+
+        #hero .container {
+            padding-top: 72px;
+        }
+
+        #hero h1 {
+            margin: 0 0 10px 0;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 56px;
+            color: #fff;
+        }
+
+        #hero h2 {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 50px;
+            font-size: 24px;
+        }
+
+        #hero .btn-get-started {
+            font-family: "Jost", sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: 1px;
+            display: inline-block;
+            padding: 10px 28px 11px 28px;
+            border-radius: 50px;
+            transition: 0.5s;
+            margin: 10px 0 0 0;
+            color: #fff;
+            background: #47b2e4;
+        }
+
+        #hero .btn-get-started:hover {
+            background: #209dd8;
+        }
+
+        #hero .btn-watch-video {
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            transition: 0.5s;
+            margin: 10px 0 0 25px;
+            color: #fff;
+            line-height: 1;
+        }
+
+        #hero .btn-watch-video i {
+            line-height: 0;
+            color: #fff;
+            font-size: 32px;
+            transition: 0.3s;
+            margin-right: 8px;
+        }
+
+        #hero .btn-watch-video:hover i {
+            color: #47b2e4;
+        }
+
+        #hero .animated {
+            animation: up-down 2s ease-in-out infinite alternate-reverse both;
+        }
+
+        @media (max-width: 991px) {
+            #hero {
+                height: 100vh;
+                text-align: center;
+            }
+
+            #hero .animated {
+                animation: none;
+            }
+
+            #hero .hero-img {
+                text-align: center;
+            }
+
+            #hero .hero-img img {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #hero h1 {
+                font-size: 28px;
+                line-height: 36px;
+            }
+
+            #hero h2 {
+                font-size: 18px;
+                line-height: 24px;
+                margin-bottom: 30px;
+            }
+
+            #hero .hero-img img {
+                width: 70%;
+            }
+        }
+
+        @media (max-width: 575px) {
+            #hero .hero-img img {
+                width: 80%;
+            }
+
+            #hero .btn-get-started {
+                font-size: 16px;
+                padding: 10px 24px 11px 24px;
+            }
+        }
+
+        @keyframes up-down {
+            0% {
+                transform: translateY(10px);
+            }
+
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+
+    <style>
+        body {
+            background-image: linear-gradient(#034794, #8302ce);
+            background-repeat: no-repeat;
+            color: #000;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none !important;
+            color: inherit;
+        }
+
+        a:hover {
+            color: #455A64;
+        }
+
+        .card {
+            border-radius: 5px;
+            background-color: #fff;
+            padding-left: 60px;
+            padding-right: 60px;
+            margin-top: 30px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .rating-box {
+            width: 130px;
+            height: 130px;
+            margin-right: auto;
+            margin-left: auto;
+            background-color: #FBC02D;
+            color: #fff;
+        }
+
+        .rating-label {
+            font-weight: bold;
+        }
+
+        /* Rating bar width */
+        .rating-bar {
+            width: 300px;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        /* The bar container */
+        .bar-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            text-align: center;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        /* Individual bars */
+        .bar-5 {
+            width: 70%;
+            height: 13px;
+            background-color: #FBC02D;
+            border-radius: 20px;
+
+        }
+
+        .bar-4 {
+            width: 30%;
+            height: 13px;
+            background-color: #FBC02D;
+            border-radius: 20px;
+
+        }
+
+        .bar-3 {
+            width: 20%;
+            height: 13px;
+            background-color: #FBC02D;
+            border-radius: 20px;
+
+        }
+
+        .bar-2 {
+            width: 10%;
+            height: 13px;
+            background-color: #FBC02D;
+            border-radius: 20px;
+
+        }
+
+        .bar-1 {
+            width: 0%;
+            height: 13px;
+            background-color: #FBC02D;
+            border-radius: 20px;
+
+        }
+
+        td {
+            padding-bottom: 10px;
+        }
+
+        .star-active {
+            color: #FBC02D;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .star-active:hover {
+            color: #F9A825;
+            cursor: pointer;
+        }
+
+        .star-inactive {
+            color: #CFD8DC;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .blue-text {
+            color: #0091EA;
+        }
+
+        .content {
+            font-size: 18px;
+        }
+
+        .profile-pic {
+            width: 90px;
+            height: 90px;
+            border-radius: 100%;
+            margin-right: 30px;
+        }
+
+        .pic {
+            width: 80px;
+            height: 80px;
+            margin-right: 10px;
+        }
+
+        .vote {
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <div style="background-color: #37517e; padding: 10px 0; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+        <div
+            style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+            <h1>
+                <span style="color: white;">GAME</span><span style="color: orange;">STORE</span>
+            </h1>
+            <div style="display: flex; align-items: center;">
+                <div style="margin-right: 20px;">
+                    <input type="text" placeholder="Search"
+                        style="padding: 5px; border: 1px solid #ccc; border-radius: 5px;">
+                </div>
+                <button
+                    style="background-color: transparent; border: none; color: white; padding: 5px 10px; cursor: pointer;">Search</button>
+            </div>
+            <div>
+                <a href="/" style="color: white; text-decoration: none; margin-right: 20px;">Home</a>
+                <a href="/products/show" style="color: white; text-decoration: none; margin-right: 20px;">Products</a>
+
+                {% if request.user.is_authenticated %}
+                <a href="/cart" style="color: white; text-decoration: none; margin-right: 20px;">Cart</a>
+                <a href="/logout" style="color: white; text-decoration: none; margin-right: 20px;">Log out</a>
+                <a href="/orders" style="color: white; text-decoration: none; margin-right: 20px;">Order History</a>
+                <a style="color: rgb(243, 243, 231);">Hello,</a>
+                <a href="#" style="color: yellow; text-decoration: none; font-size: 25px; font-family: Cursive;">{{ request.user.first_name }}</a>
+
+
+                {% else %}
+                <a href="/login" style="color: white; text-decoration: none; margin-right: 20px;">Cart</a>
+                <a href="/login" style="color: white; text-decoration: none; margin-right: 20px;">Log in</a>
+                <a href="/register" style="color: white; text-decoration: none; margin-right: 20px;">Register</a>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Marquees -->
+    <!-- Marquees -->
+    <div class="marquee marquee-left">
+        FREE VOUCHER WORTH <span style="color: red; font-size: 15px;">★Rs. 999 /-</span>. ON ORDERS ABOVE Rs.
+        2499/-.<span style="color: red; font-size: 10px;">LimitedTimeOffer**</span>.
+    </div>
+
+    <!-- Body Content Goes Here -->
+
+    <div class="container-fluid px-1 py-5 mx-auto">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
+                <div class="card">
+                    <div class="row justify-content-left d-flex">
+                        <div class="col-md-4 d-flex flex-column">
+                            <div class="rating-box">
+                                <h1 class="pt-4">{{ rating }}</h1>
+                                <p class="">out of 5</p>
+                            </div>
+                            <div>
+                                <span class="fa fa-star star-active mx-1"></span>
+                                <span class="fa fa-star star-active mx-1"></span>
+                                <span class="fa fa-star star-active mx-1"></span>
+                                <span class="fa fa-star star-active mx-1"></span>
+                                <span class="fa fa-star star-inactive mx-1"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="rating-bar0 justify-content-center">
+                                <table class="text-left mx-auto">
+                                    <tr>
+                                        <td class="rating-label">Excellent</td>
+                                        <td class="rating-bar">
+                                            <div class="bar-container">
+                                                <div class="bar-5"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">123</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="rating-label">Good</td>
+                                        <td class="rating-bar">
+                                            <div class="bar-container">
+                                                <div class="bar-4"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">23</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="rating-label">Average</td>
+                                        <td class="rating-bar">
+                                            <div class="bar-container">
+                                                <div class="bar-3"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">10</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="rating-label">Poor</td>
+                                        <td class="rating-bar">
+                                            <div class="bar-container">
+                                                <div class="bar-2"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="rating-label">Terrible</td>
+                                        <td class="rating-bar">
+                                            <div class="bar-container">
+                                                <div class="bar-1"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">0</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% for x in data %}
+
+                <div class="card">
+                    <div class="row d-flex">
+                        <!-- <div class="">
+                            <img class="profile-pic" src="https://i.imgur.com/V3ICjlm.jpg">
+                        </div> -->
+                        <div class="d-flex flex-column">
+                            <h3 class="mt-2 mb-0">{{ x.user.first_name }} {{ x.user.last_name }}</h3>
+                            <div>
+
+                                <p class="text-left"><span class="text-muted">{{ x.rating }}</span>
+
+                                    {% if x.rating == 1 %}
+                                    <span class="fa fa-star star-active ml-3"></span>
+                                    <span class="fa fa-star star-inactive"></span>
+                                    <span class="fa fa-star star-inactive"></span>
+                                    <span class="fa fa-star star-inactive"></span>
+                                    <span class="fa fa-star star-inactive"></span>
+                                </p>
+
+                                {% elif x.rating == 2 %}
+                                <span class="fa fa-star star-active ml-3"></span>
+                                <span class="fa fa-star star-active"></span>
+                                <span class="fa fa-star star-inactive"></span>
+                                <span class="fa fa-star star-inactive"></span>
+                                <span class="fa fa-star star-inactive"></span></p>
+                                {% elif x.rating == 3 %}
+                                <span class="fa fa-star star-active ml-3"></span>
+                                <span class="fa fa-star star-active"></span>
+                                <span class="fa fa-star star-active"></span>
+                                <span class="fa fa-star star-inactive"></span>
+                                <span class="fa fa-star star-inactive"></span></p>
+
+                                {% elif x.rating == 4 %}
+                                <span class="fa fa-star star-active ml-3"></span>
+                                <span class="fa fa-star star-active"></span>
+                                <span class="fa fa-star star-active"></span>
+                                <span class="fa fa-star star-active"></span>
+                                <span class="fa fa-star star-inactive"></span></p>
+
+                                {% else %}
+                                <span class="fa fa-star star-active ml-3"></span>
+                                <span class="fa fa-star star-active"></span>
+                                <span class="fa fa-star star-active"></span>
+                                <span class="fa fa-star star-active"></span>
+                                <span class="fa fa-star star-active"></span></p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- <div class="ml-auto">
+                            <p class="text-muted pt-5 pt-sm-3">10 Sept</p>
+                        </div> -->
+                    </div>
+                    <div class="row text-left">
+                        <h5><a>{{ x.productName }}</a></h5><br>
+                        <h4 class="blue-text mt-3">{{ x.review }}</h4>
+                        <!-- <p class="content"> {{ x.review }}</p> -->
+                    </div>
+                    <div class="row text-left">
+                        <img class="pic" src="{{ x.image.url }}">
+                    </div>
+                    <div class="row text-left mt-4">
+                        <div class="like mr-3 vote">
+                            <img src="https://i.imgur.com/mHSQOaX.png"><span class="blue-text pl-2">20</span>
+                        </div>
+                        <div class="unlike vote">
+                            <img src="https://i.imgur.com/bFBO3J7.png"><span class="text-muted pl-2">4</span>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

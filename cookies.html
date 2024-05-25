@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies and Session Demo</title>
+</head>
+<body>
+    <h1>Cookies and Session Demo</h1>
+    <h2>Cookie Information:</h2>
+    <p>Value of the demo_cookie: {{ request.COOKIES.demo_cookie }}</p>
+
+    <h2>Session Information:</h2>
+    {% if session_data %}
+        <p>Session ID: {{ session_data.session_key }}</p>
+        <p>Session Data: {{ session_data }}</p>
+    {% else %}
+        <p>No active session.</p>
+    {% endif %}
+</body>
+</html>

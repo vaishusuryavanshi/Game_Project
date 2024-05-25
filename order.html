@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <link rel="icon" href="{% static 'images/weblogo.png' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .order-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .order-card {
+            width: 300px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-image {
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .order-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .order-details {
+            padding: 16px;
+        }
+
+        .order-details h3 {
+            margin-top: 0;
+        }
+
+        .order-details p {
+            margin: 10px 0;
+        }
+
+        .add-review-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .add-review-link:hover {
+            text-decoration: underline;
+        }
+        .marquee {
+            color: rgb(46, 160, 55);
+            border: none;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+        .marquee-left {
+            animation: marquee-left 20s linear infinite;
+        }
+        .marquee-right {
+            animation: marquee-right 20s linear infinite;
+        }
+        @keyframes marquee-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body>
+    
+<!-- Navbar Section -->
+<div style="background-color: #37517e; padding: 10px 0; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+        <h1>
+            <span style="color: white;">GAME</span><span style="color: orange;">STORE</span>
+        </h1>
+        <div style="display: flex; align-items: center;">
+            <div style="margin-right: 20px;">
+                <input type="text" placeholder="Search" style="padding: 5px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+            <button style="background-color: transparent; border: none; color: white; padding: 5px 10px; cursor: pointer;">Search</button>
+        </div>
+        <div>
+            <a href="/" style="color: white; text-decoration: none; margin-right: 20px;">Home</a>
+            <a href="/products/show" style="color: white; text-decoration: none; margin-right: 20px;">Products</a>
+
+            {% if request.user.is_authenticated %}
+            <a href="/cart" style="color: white; text-decoration: none; margin-right: 20px;">Cart</a>
+            <a href="/logout" style="color: white; text-decoration: none; margin-right: 20px;">Log out</a>
+            <a href="/orders" style="color: white; text-decoration: none; margin-right: 20px;">Order History</a>
+            <a style="color: rgb(243, 243, 231);">Hello,</a>
+            <a href="#" style="color: yellow; text-decoration: none; font-size: 25px; font-family: Cursive;" >{{ request.user.first_name }}</a>
+
+
+            {% else %}
+            <a href="/login" style="color: white; text-decoration: none; margin-right: 20px;">Cart</a>
+            <a href="/login" style="color: white; text-decoration: none; margin-right: 20px;">Log in</a>
+            <a href="/register" style="color: white; text-decoration: none; margin-right: 20px;">Register</a>
+            
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Marquees -->
+<!-- Marquees -->
+<div class="marquee marquee-left">
+  FREE VOUCHER WORTH <span style="color: red; font-size: 15px;">★Rs. 999 /-</span>. ON ORDERS ABOVE Rs. 2499/-.<span style="color: red; font-size: 10px;">LimitedTimeOffer**</span>.
+</div>
+
+
+
+
+
+
+
+    <h2 align="center">Order History</h2>
+    <div class="order-container">
+        {% for x in data %}
+        <div class="order-card">
+            <div class="order-image">
+                <img src="{{ x.prod.image.url }}" alt="{{ x.prod.productName }}">
+            </div>
+            <div class="order-details">
+                <h3>{{ x.prod.productName }}</h3>
+                <p><strong>Quantity:</strong> {{ x.quantity }}</p>
+                <p><strong>Total Price:</strong> {{ x.total_price }}</p>
+                <!-- <p><strong>Order Date & Time :</strong> {{ x.date }}</p> -->
+                <p><a class="add-review-link" href="/review/add/{{ x.prod.id }}">Add Review</a></p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="1" align="center">
+
+        <tr>
+            <td>Number</td>
+            <td>Product Name</td>
+            <td>Image</td>
+            <td>Quantity</td>
+            <td>Total Price</td>
+            <td>Date of Order</td>
+            <td>Review</td>
+        </tr>
+
+
+        {% for x in data %}
+        <tr>
+            <th>{{ forloop.counter }}</th>
+            <th>{{ x.prod.productName }}</th>
+            <th>
+                <img src="{{ x.prod.image.url }}" alt="" style="height: 100px; width: 100px;">
+            </th>
+            <th>{{ x.quantity }}</th>
+            <th>{{ x.total_price }}</th>
+            <th>{{ x.date }}</th>
+            <th><a href="/review/add/{{ x.prod.id }}">Add review</a></th>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+</body>
+
+</html> -->
